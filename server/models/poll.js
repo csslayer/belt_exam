@@ -11,31 +11,21 @@ var PollSchema = new mongoose.Schema({
 	  type: String,
 	  required: true, minlength: 8,
 	},
-	opt1: [{
-		opt1: {type: String, require: true, minlength: 3},
+	opt1: {
+		option: {type: String, required: true, minlength: 3},
 		votes: {type: Number, default: 0}
-		}],
-	opt2: [{
-		opt2: {type: String, require: true, minlength: 3},
+	},
+	opt2: {
+		option: {type: String, required: true, minlength: 3},
 		votes: {type: Number, default: 0}
-		}],	
-	opt3: [{
-		opt3: {type: String, require: true, minlength: 3},
+	},	
+	opt3: {
+		option: {type: String, required: true, minlength: 3},
 		votes: {type: Number, default: 0}
-		}],
-	opt4: [{
-		opt4: {type: String, require: true, minlength: 3},
+	},
+	opt4: {
+		option: {type: String, required: true, minlength: 3},
 		votes: {type: Number, default: 0}
-		}],
-	votes: {
-	  count: {
-		type: Number,
-		default: 0
-	  },
-	  users: [{
-		type: mongoose.Schema.Types.ObjectId,
-		ref: 'User'
-	  }]
 	}
 }, { timestamps: true })
 

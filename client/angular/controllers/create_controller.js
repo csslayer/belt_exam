@@ -1,16 +1,17 @@
-app.controller('CreateController', function(UserFactory, PollFactory){
-	console.log('initializing PollsController...');
+app.controller('CreateController', function(UserFactory, PollFactory, $location){
+	console.log('initializing CreateController...');
 	
 	var self = this;
 	self.polls = [];
 	self.new_poll_errors = [];
 	self.newPoll = {};
-	// self.newComment = {};
-	// self.new_comment_errors = {};
+
 
 	self.index = function(){
+		// console.log('invoking CC.index()');
 		PollFactory.index(function(res){
 			self.polls = res.data;
+			console.log(self.polls);
 		})
 	}
 
@@ -23,18 +24,25 @@ app.controller('CreateController', function(UserFactory, PollFactory){
 		UserFactory.session(function(user){
 			newPoll.user = user._id;
 			PollFactory.create(newPoll, function(res){
+				console.log(res);
 				self.newPoll = {};
 				if(res.data.errors){
 					for(key in res.data.errors){
 						var error = res.data.errors[key];
-						self.new_poll_errors.push(error.poll)
+						self.new_poll_errors.push(error.message);
 					}
 				} else {
-					self.index();
+					$location.url('/dashboard');
 				}
 			})
 		})
 	}
+
+	self.destroy = function(poll_id){
+		console.log(poll_id)
+		PollFactory.destroy(poll_id, self.index);
+	}
+
 
 
 })

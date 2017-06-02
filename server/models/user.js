@@ -30,21 +30,21 @@ var UserSchema = new mongoose.Schema({
 	password: {
 		type: 		String,
 		required: [true, 'Password is required!'],
-		validate: {
-			validator: function(pass){
-				return passRegex.test(pass);
-			},
-			message: 'Passwords must be between 8 and 32 characters, contain 1 uppercase, 1 lower case and 1 number.  Spaces are not allowed.'
-		}
+		// validate: {
+		// 	validator: function(pass){
+		// 		return passRegex.test(pass);
+		// 	},
+		// 	message: 'Passwords must be between 8 and 32 characters, contain 1 uppercase, 1 lower case and 1 number.  Spaces are not allowed.'
+		// }
 	},
-	message: [{
+	polls: [{
 		type: mongoose.Schema.Types.ObjectId,
-		ref: 'Message'
+		ref: 'Poll'
 	}],
-	comments: [{
-		type: mongoose.Schema.Types.ObjectId,
-		ref: 'Comment'
-	}],
+	// comments: [{
+	// 	type: mongoose.Schema.Types.ObjectId,
+	// 	ref: 'Comment'
+	// }],
 	birthday: {
 		type: 		Date,
 		required: [true, 'Your Birthday is required for registration']

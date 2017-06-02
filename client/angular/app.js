@@ -12,11 +12,11 @@ app.config(function($routeProvider){
 	})
 	.when('/create',{
 		templateUrl: 'partials/create.html',
-		controller: 'create_controller'
+		controller: 'CreateController as CC'
 	})
-	.when('poll/:id',{
+	.when('/poll/:id',{
 		templateUrl: 'partials/show.html',
-		controller: 'show_controller'
+		controller: 'ShowController as SC'
 	})
 	.otherwise({ redirectTo: '/' });
 })

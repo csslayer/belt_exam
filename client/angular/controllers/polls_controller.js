@@ -14,9 +14,6 @@ app.controller('PollsController', function(UserFactory, PollFactory){
 	}
 
 
-	self.destroy = function(poll_id){
-		PollFactory.destroy(poll_id, self.index);
-	}
-
+	
 
 })

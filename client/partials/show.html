@@ -1,32 +1,34 @@
-<a href="#!/poll">Go to Polls</a>
-<div>
-	<h3>{{ poll.poll }}</h3>
+<div class="header" ng-init="SC.show()">
+	<a href="#!/dashboard">Go to Polls</a>
+	<div>
+		<h3>{{ SC.poll.poll }}</h3>
+	</div>
+	<p>Click the Vote button to choose one.</p>
+	<table>
+		<tr>
+			<th>Option</th>
+			<th>Current Count of Votes</th>
+			<th>Action</th>
+		</tr>
+		<tr>
+			<td>{{ SC.poll.opt1.option }}</td>
+			<td>{{ SC.poll.opt1.votes }}</td>
+			<td><button ng-click="SC.updateVotes('opt1', SC.poll._id)">Vote</button></td>
+		</tr>
+			<tr>
+			<td>{{ SC.poll.opt2.option }}</td>
+			<td>{{ SC.poll.opt2.votes }}</td>
+			<td><button ng-click="SC.updateVotes('opt2', SC.poll._id)">Vote</button></td>
+		</tr>
+			<tr>
+			<td>{{ SC.poll.opt3.option }}</td>
+			<td>{{ SC.poll.opt3.votes }}</td>
+			<td><button ng-click="SC.updateVotes('opt3', SC.poll._id)">Vote</button></td>
+		</tr>
+			<tr>
+			<td>{{ SC.poll.opt4.option }}</td>
+			<td>{{ SC.poll.opt4.votes }}</td>
+			<td><button ng-click="SC.updateVotes('opt4', SC.poll._id)">Vote</button></td>
+		</tr>
+	</table>
 </div>
-<p>Clic the Vote button to choose one.</p>
-<table>
-	<tr>
-		<th>Option</th>
-		<th>Current Count of Votes</th>
-		<th>Action</th>
-	</tr>
-	<tr>
-		<td>{{ poll.opt1[0].opt1 }}</td>
-		<td>{{ poll.opt1[0].votes }}</td>
-		<td><button ng-click="updateVotes1()">Vote</button></td>
-	</tr>
-		<tr>
-		<td>{{ poll.opt2[0].opt2 }}</td>
-		<td>{{ poll.opt2[0].votes }}</td>
-		<td><button ng-click="updateVotes2()">Vote</button></td>
-	</tr>
-		<tr>
-		<td>{{ poll.opt3[0].opt3 }}</td>
-		<td>{{ poll.opt3[0].votes }}</td>
-		<td><button ng-click="updateVotes3()">Vote</button></td>
-	</tr>
-		<tr>
-		<td>{{ poll.opt4[0].opt4 }}</td>
-		<td>{{ poll.opt4[0].votes }}</td>
-		<td><button ng-click="updateVotes4()">Vote</button></td>
-	</tr>
-</table>

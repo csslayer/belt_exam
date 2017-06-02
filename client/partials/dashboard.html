@@ -1,12 +1,12 @@
-<div ng-init="UC.session()">
-	<div class="header" ng-controller="CreateController as CC">
+<div ng-init="UC.session()" ng-controller="CreateController as CC">
+	<div class="header">
 		<h3 class="float_right inline_block">Search:<input type="text" ng-model="CC.x"></h3>
 		<a class="float_right inline_block" href="#" ng-click="UC.logout()">Logout</a>
 		<a href="#!/create">Create a New Poll</a>
 		<h3>Current Polls:</h3>
 		<hr>
 	</div>
-	<div ng-init="CC.show()">
+	<div ng-init="CC.index()">
 		<table>
 			<tr>
 				<th>User Name</th>
@@ -15,10 +15,10 @@
 				<th>Action</th>
 			</tr>
 			<tr ng-repeat="poll in CC.polls | filter:CC.x">
-				<td>{{ poll.user.username }}</td>
-				<td><a href="#!/poll/{{poll.poll}}"></a></td>
-				<td>{{ poll.createAt | date: 'MMMM/dd/yyyy }}</td>
-				<td><button ng-click="delete(poll)">Delete</button></td>
+				<td>{{ poll.user.first_name }}</td>
+				<td><a href="#!/poll/{{poll._id}}">{{poll.poll}}</a></td>
+				<td>{{ poll.createdAt | date: 'MMMM/dd/yyyy' }}</td>
+				<td ng-if="UC.current_user._id == poll.user._id"><button ng-click="CC.destroy(poll._id)">Delete</button></td>
 			</tr>
 		</table>
 	</div>
